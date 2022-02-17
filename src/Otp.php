@@ -26,13 +26,13 @@ class Otp extends Facade
     {
         Model::where('identifier', $identifier)->where('valid', true)->delete();
 
-        $token = str_pad($this->generatePin(), 4, '0', STR_PAD_LEFT);
+        $token = str_pad(self::generatePin(), 4, '0', STR_PAD_LEFT);
 
         if ($digits == 5)
-            $token = str_pad($this->generatePin(5), 5, '0', STR_PAD_LEFT);
+            $token = str_pad(self::generatePin(5), 5, '0', STR_PAD_LEFT);
 
         if ($digits == 6)
-            $token = str_pad($this->generatePin(6), 6, '0', STR_PAD_LEFT);
+            $token = str_pad(self::generatePin(6), 6, '0', STR_PAD_LEFT);
 
         Model::create([
             'identifier' => $identifier,
